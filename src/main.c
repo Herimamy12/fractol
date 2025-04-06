@@ -14,8 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	ft_printf("C'est bon\n");
+	t_data	*data;
+
+	data = new_data(argc, argv);
+	if (!data)
+		return (1);
+	loop(data);
 	return (0);
-	(void)argc;
-	(void)argv;
 }
