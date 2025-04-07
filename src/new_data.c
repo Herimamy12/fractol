@@ -17,6 +17,10 @@ t_data	*new_data(int argc, char **argv)
 	data->z_im = 0;
 	data->c_re = 0;
 	data->c_im = 0;
+	data->x_area = 4;
+	data->y_area = 4;
+	data->x_start = 2;
+	data->y_start = 2;
 	set_julia(data, argv);
 	return (data);
 }

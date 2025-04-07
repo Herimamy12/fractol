@@ -49,6 +49,10 @@ typedef struct s_data
 	double	z_im;
 	double	c_re;
 	double	c_im;
+	double	x_area;
+	double	y_area;
+	double	x_start;
+	double	y_start;
 	t_win	*win;
 	t_img	*img;
 }			t_data;
@@ -97,7 +101,6 @@ int		to_close(t_data *data);
 // render
 // 
 void	draw(t_data *data);
-int		mandelbrot(double x, double y, t_data *data);
-int		julia(double x, double y, t_data *data);
+int		fractal_point(int x, int y, t_data *data);
 
 #endif

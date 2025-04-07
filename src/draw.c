@@ -1,7 +1,5 @@
 #include "../include/fractol.h"
 
-int	fractal_point(int x, int y, t_data *data);
-
 void	draw(t_data *data)
 {
 	int	x;
@@ -15,10 +13,6 @@ void	draw(t_data *data)
 		while (++ x < WIDTH)
 		{
 			data->color = 0x3A3AFF;
-			// if (data->type == 1)
-			// 	div = mandelbrot(x, y, data);
-			// else
-			// 	div = julia(x, y, data);
 			div = fractal_point(x, y, data);
 			data->color /= ++ div;
 			if (-- div == ITER_MAX || !div)
@@ -26,7 +20,8 @@ void	draw(t_data *data)
 			put_pixel_in_image(data->img, x, y, data->color);
 		}
 	}
-	mlx_put_image_to_window(data->win->ptr, data->win->win, data->img->img, 0, 0);
+	mlx_put_image_to_window(data->win->ptr,
+		data->win->win, data->img->img, 0, 0);
 }
 
 int	fractal_point(int x, int y, t_data *data)
@@ -41,61 +36,19 @@ int	fractal_point(int x, int y, t_data *data)
 	z_im = 0;
 	if (data->type == 1)
 	{
-		data->c_re = (x / (double)WIDTH) * 4 - 2;
-		data->c_im = (y / (double)HEIGTH) * 4 - 2;
+		data->c_re = (x / (double)WIDTH) * data->x_area - data->x_start;
+		data->c_im = (y / (double)HEIGTH) * data->y_area - data->y_start;
 	}
 	else
 	{
-		z_re = (x / (double)WIDTH) * 4 - 2;
-		z_im = (y / (double)HEIGTH) * 4 - 2;
+		z_re = (x / (double)WIDTH) * data->x_area - data->x_start;
+		z_im = (y / (double)HEIGTH) * data->y_area - data->y_start;
 	}
-	while (z_re * z_re + z_im * z_im < 4 && i ++ < ITER_MAX)
+	while (z_re * z_re + z_im * z_im < 4 && i < ITER_MAX && ++ i)
 	{
 		tmp = z_re * z_re - z_im * z_im + data->c_re;
 		z_im = 2 * z_re * z_im + data->c_im;
 		z_re = tmp;
 	}
 	return (i);
-}
-
-int	mandelbrot(double x, double y, t_data *data)
-{
-	int		iter;
-	double	z_re;
-	double	z_im;
-	double	temp;
-
-	iter = 0;
-	z_re = 0;
-	z_im = 0;
-	data->c_re = (x / (double)WIDTH) * 4 - 2;
-	data->c_im = (y / (double)HEIGTH) * 4 - 2;
-	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
-	{
-		temp = z_re * z_re - z_im * z_im + data->c_re;
-		z_im = 2 * z_re * z_im + data->c_im;
-		z_re = temp;
-		iter++;
-	}
-	return (iter);
-}
-
-int julia(double x, double y, t_data *data)
-{
-	int		iter;
-	double	z_re;
-	double	z_im;
-	double	temp;
-
-	iter = 0;
-	z_re = (x / (double)WIDTH) * 4 - 2;
-	z_im = (y / (double)HEIGTH) * 4 - 2;
-	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
-	{
-		temp = z_re * z_re - z_im * z_im + data->c_re;
-		z_im = 2 * z_re * z_im + data->c_im;
-		z_re = temp;
-		iter++;
-	}
-	return (iter);
 }
