@@ -2,68 +2,96 @@
 
 void	draw(t_data *data)
 {
-	int	x = 0;
-	int	y = 0;
+	int	x;
+	int	y;
 	int	div;
-	int	color = 0;
 
-	while (y < HEIGTH)
+	y = -1;
+	while (++ y < HEIGTH)
 	{
-		x = 0;
-		while (x < WIDTH)
+		x = -1;
+		while (++ x < WIDTH)
 		{
-			color = 0x3A3AFF;
-			div = mandelbrot(x, y);
-			if (div == 0)
-				div = 1;
-			color /= div;
-			if (div == 1500)
-				color = 0;
-			put_pixel_in_image(data->img, x, y, color);
-			x++;
+			data->color = 0x3A3AFF;
+			if (data->type == 1)
+				div = mandelbrot(x, y, data);
+			else
+				div = julia(x, y, data);
+			data->color /= ++ div;
+			if (-- div == ITER_MAX || !div)
+				data->color = 0X0;
+			put_pixel_in_image(data->img, x, y, data->color);
 		}
-		y++;
 	}
 	mlx_put_image_to_window(data->win->ptr, data->win->win, data->img->img, 0, 0);
 }
 
-int	mandelbrot(double x, double y)
+int	fractal_point(int x, int y, t_data *data)
 {
-	int		iter = 0;
-	int		iter_max = 1500;
-	double	zx = 0;
-	double	zy = 0;
+	int		i;
+	double	z_re;
+	double	z_im;
+	double	tmp;
+
+	i = 0;
+	z_re = 0;
+	z_im = 0;
+	if (data->type == 1)
+	{
+		data->c_re = (x / (double)WIDTH) * 4 - 2;
+		data->c_im = (y / (double)HEIGTH) * 4 - 2;
+	}
+	else
+	{
+		z_re = (x / (double)WIDTH) * 4 - 2;
+		z_im = (y / (double)HEIGTH) * 4 - 2;
+	}
+	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
+	{
+		temp = z_re * z_re - z_im * z_im + data->c_re;
+		z_im = 2 * z_re * z_im + data->c_im;
+		z_re = temp;
+	}
+	return (i);
+}
+
+int	mandelbrot(double x, double y, t_data *data)
+{
+	int		iter;
+	double	z_re;
+	double	z_im;
 	double	temp;
 
-	double	x_complex = (x / (double)WIDTH) * 4 - 2;
-	double	y_complex = (y / (double)HEIGTH) * 4 - 2;
-
-	while (zx * zx + zy * zy < 4 && iter < iter_max)
+	iter = 0;
+	z_re = 0;
+	z_im = 0;
+	data->c_re = (x / (double)WIDTH) * 4 - 2;
+	data->c_im = (y / (double)HEIGTH) * 4 - 2;
+	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
 	{
-		temp = zx * zx - zy * zy + x_complex;
-		zy = 2 * zx * zy + y_complex;
-		zx = temp;
+		temp = z_re * z_re - z_im * z_im + data->c_re;
+		z_im = 2 * z_re * z_im + data->c_im;
+		z_re = temp;
 		iter++;
 	}
 	return (iter);
 }
 
-int julia(double x, double y)
+int julia(double x, double y, t_data *data)
 {
-	int		iter = 0;
-	int		iter_max = 1500;
-	double	zx = (x / (double)WIDTH) * 4 - 2;
-	double	zy = (y / (double)HEIGTH) * 4 - 2;
+	int		iter;
+	double	z_re;
+	double	z_im;
 	double	temp;
 
-	double	c_re = 0.285;
-	double	c_im = 0.01;
-
-	while (zx * zx + zy * zy < 4 && iter < iter_max)
+	iter = 0;
+	z_re = (x / (double)WIDTH) * 4 - 2;
+	z_im = (y / (double)HEIGTH) * 4 - 2;
+	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
 	{
-		temp = zx * zx - zy * zy + c_re;
-		zy = 2 * zx * zy + c_im;
-		zx = temp;
+		temp = z_re * z_re - z_im * z_im + data->c_re;
+		z_im = 2 * z_re * z_im + data->c_im;
+		z_re = temp;
 		iter++;
 	}
 	return (iter);

@@ -6,15 +6,7 @@ void	destroy_data(t_data *data)
 		return ;
 	delete_img(data->img, data->win);
 	delete_win(data->win);
-	delete_pnt(data->pnt);
 	free (data);
-}
-
-void	delete_pnt(t_pnt *pnt)
-{
-	if (!pnt)
-		return ;
-	free (pnt);
 }
 
 void	delete_star(void **ptr)

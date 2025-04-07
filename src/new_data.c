@@ -7,13 +7,26 @@ t_data	*new_data(int argc, char **argv)
 	data = ft_calloc(sizeof(t_data), 1);
 	if (!data)
 		return (p_error("Alloc t_data error\n"), NULL);
-	data->fract_type = set_type(argc, argv);
-	if (!data->fract_type)
+	data->type = set_type(argc, argv);
+	if (!data->type)
 		return (destroy_data(data), NULL);
 	data->win = new_win();
 	data->img = new_img(data->win);
-	data->pnt = new_pnt(data->fract_type, argv);
+	data->color = 0;
+	data->z_re = 0;
+	data->z_im = 0;
+	data->c_re = 0;
+	data->c_im = 0;
+	set_julia(data, argv);
 	return (data);
+}
+
+void	set_julia(t_data *data, char **argv)
+{
+	if (data->type == 1)
+		return ;
+	data->c_re = ft_atoi(argv[2]);
+	data->c_im = ft_atoi(argv[3]);
 }
 
 int	set_type(int argc, char **argv)
@@ -29,27 +42,6 @@ int	set_type(int argc, char **argv)
 	if (!ft_strcmp(argv[1], "Mandelbrot"))
 		return (1);
 	return (2);
-}
-
-/*
-	For now let this function like that
-	Don't forget to remove the (type == 2) in if statement next time
-	It's work with Mandelbrot only for now
-*/
-t_pnt	*new_pnt(int type, char **argv)
-{
-	t_pnt	*pnt;
-
-	pnt = ft_calloc(sizeof(t_pnt), 1);
-	if (!pnt)
-		return (p_error("Alloc point error\n"), NULL);
-	if (type == 1 || type == 2)
-	{
-		pnt->real = 0;
-		pnt->img = 0;
-	}
-	return (pnt);
-	(void)argv;
 }
 
 t_win	*new_win(void)
