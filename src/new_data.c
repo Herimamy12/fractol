@@ -13,8 +13,6 @@ t_data	*new_data(int argc, char **argv)
 	data->win = new_win();
 	data->img = new_img(data->win);
 	data->pnt = new_pnt(data->fract_type, argv);
-	data->src_x = WIDTH / 2;
-	data->src_y = HEIGTH / 2;
 	return (data);
 }
 

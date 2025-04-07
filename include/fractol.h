@@ -47,8 +47,6 @@ typedef struct s_pnt
 typedef struct s_data
 {
 	int		fract_type;
-	double	src_y;
-	double	src_x;
 	t_win	*win;
 	t_img	*img;
 	t_pnt	*pnt;
@@ -99,5 +97,7 @@ int		to_close(t_data *data);
 // render
 // 
 void	draw(t_data *data);
+int		mandelbrot(double x, double y);
+int		julia(double x, double y);
 
 #endif
