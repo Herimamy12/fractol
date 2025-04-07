@@ -1,5 +1,7 @@
 #include "../include/fractol.h"
 
+int	fractal_point(int x, int y, t_data *data);
+
 void	draw(t_data *data)
 {
 	int	x;
@@ -13,10 +15,11 @@ void	draw(t_data *data)
 		while (++ x < WIDTH)
 		{
 			data->color = 0x3A3AFF;
-			if (data->type == 1)
-				div = mandelbrot(x, y, data);
-			else
-				div = julia(x, y, data);
+			// if (data->type == 1)
+			// 	div = mandelbrot(x, y, data);
+			// else
+			// 	div = julia(x, y, data);
+			div = fractal_point(x, y, data);
 			data->color /= ++ div;
 			if (-- div == ITER_MAX || !div)
 				data->color = 0X0;
@@ -46,11 +49,11 @@ int	fractal_point(int x, int y, t_data *data)
 		z_re = (x / (double)WIDTH) * 4 - 2;
 		z_im = (y / (double)HEIGTH) * 4 - 2;
 	}
-	while (z_re * z_re + z_im * z_im < 4 && iter < ITER_MAX)
+	while (z_re * z_re + z_im * z_im < 4 && i ++ < ITER_MAX)
 	{
-		temp = z_re * z_re - z_im * z_im + data->c_re;
+		tmp = z_re * z_re - z_im * z_im + data->c_re;
 		z_im = 2 * z_re * z_im + data->c_im;
-		z_re = temp;
+		z_re = tmp;
 	}
 	return (i);
 }
