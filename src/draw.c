@@ -12,20 +12,14 @@ void	draw(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			// if (julia(x, y))
-			// 	put_pixel_in_image(data->img, x, y, 0x0);
-			// else
-			// 	put_pixel_in_image(data->img, x, y, 0xFFF);
-
-			// div = julia(x, y);
+			color = 0x3A3AFF;
 			div = mandelbrot(x, y);
-			if (div > 255)
-				div = div % 255;
 			if (div == 0)
 				div = 1;
-			color = (0xAF / div << 16 | 0xC0 / div << 8 | 0xD0);
+			color /= div;
+			if (div == 1500)
+				color = 0;
 			put_pixel_in_image(data->img, x, y, color);
-
 			x++;
 		}
 		y++;
@@ -36,7 +30,7 @@ void	draw(t_data *data)
 int	mandelbrot(double x, double y)
 {
 	int		iter = 0;
-	int		iter_max = 5500;
+	int		iter_max = 1500;
 	double	zx = 0;
 	double	zy = 0;
 	double	temp;
@@ -51,16 +45,13 @@ int	mandelbrot(double x, double y)
 		zx = temp;
 		iter++;
 	}
-	// if (iter == iter_max)
-	// 	return 1;
-	// return 0;
 	return (iter);
 }
 
 int julia(double x, double y)
 {
 	int		iter = 0;
-	int		iter_max = 1050;
+	int		iter_max = 1500;
 	double	zx = (x / (double)WIDTH) * 4 - 2;
 	double	zy = (y / (double)HEIGTH) * 4 - 2;
 	double	temp;
@@ -75,8 +66,5 @@ int julia(double x, double y)
 		zx = temp;
 		iter++;
 	}
-	// if (iter == iter_max)
-	// 	return 1;
-	// return 0;
 	return (iter);
 }

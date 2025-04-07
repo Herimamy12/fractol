@@ -4,8 +4,8 @@ void	help(void)
 {
 	p_error("How to use ??\n");
 	p_error("You have two choice, like :\n");
-	p_error("./fractol Mandelbrot\n");
-	p_error("./fractol Julia real_number imaginary_number\n");
+	p_error("\t\t\t\t./fractol Mandelbrot\n");
+	p_error("\t\t\t\t./fractol Julia real_number imaginary_number\n");
 }
 
 void	p_error(char *s)
