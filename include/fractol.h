@@ -20,11 +20,14 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
 
-# define WIDTH 1020
-# define HEIGTH 980
+# define WIDTH 1280
+# define HEIGTH 720
 
-// Iteration max for loop in fractol
+// Iteration max for loop in fractol_point
 # define ITER_MAX 15
+
+// Const additional for area
+# define ADD_AREA
 
 typedef struct s_win
 {

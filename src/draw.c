@@ -32,14 +32,15 @@ int	fractal_point(int x, int y, t_data *data)
 	double	tmp;
 
 	i = 0;
-	z_re = (x / (double)WIDTH) * data->x_area - data->x_start;
-	z_im = (y / (double)HEIGTH) * data->y_area - data->y_start;
+	x -= (WIDTH - HEIGTH) / 2;
+	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
+	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
 	if (data->type == 1)
 	{
 		z_re = 0;
 		z_im = 0;
-		data->c_re = (x / (double)WIDTH) * data->x_area - data->x_start;
-		data->c_im = (y / (double)HEIGTH) * data->y_area - data->y_start;
+		data->c_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
+		data->c_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
 	}
 	while (z_re * z_re + z_im * z_im < 4 && i < ITER_MAX && ++ i)
 	{
