@@ -27,7 +27,7 @@
 # define ITER_MAX 15
 
 // Const additional for area
-# define ADD_AREA
+# define ADD_AREA 0.1
 
 typedef struct s_win
 {
@@ -46,10 +46,10 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	int		color;
 	int		type;
-	double	z_re;
-	double	z_im;
+	int		color;
+	double	zoom_in;
+	double	zoom_out;
 	double	c_re;
 	double	c_im;
 	double	x_area;
@@ -105,5 +105,6 @@ int		to_close(t_data *data);
 // 
 void	draw(t_data *data);
 int		fractal_point(int x, int y, t_data *data);
+int		render(t_data *data);
 
 #endif

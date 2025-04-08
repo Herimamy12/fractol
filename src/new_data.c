@@ -13,14 +13,14 @@ t_data	*new_data(int argc, char **argv)
 	data->win = new_win();
 	data->img = new_img(data->win);
 	data->color = 0;
-	data->z_re = 0;
-	data->z_im = 0;
-	data->c_re = 0;
-	data->c_im = 0;
-	data->x_area = 4;
-	data->y_area = 4;
-	data->x_start = -2;
-	data->y_start = -2;
+	data->zoom_in = 0;
+	data->zoom_out = 0;
+	data->c_re = 0.0;
+	data->c_im = 0.0;
+	data->x_area = 4.0;
+	data->y_area = 4.0;
+	data->x_start = -2.0;
+	data->y_start = -2.0;
 	set_julia(data, argv);
 	return (data);
 }
