@@ -1,7 +1,5 @@
 #include "../include/fractol.h"
 
-int	mouse_hook(int how, t_data *data);
-
 void	loop(t_data *data)
 {
 	mlx_hook(data->win->win, 02, 1L << 0, &handle_keypress, data);
@@ -11,17 +9,17 @@ void	loop(t_data *data)
 	mlx_loop(data->win->ptr);
 }
 
-int	mouse_hook(int how, t_data *data)
+int	mouse_hook(int scroll, int x, int y, t_data *data)
 {
-	if (data)
-		ft_printf("data adress :: %p\n", data);
-	if (data->x_area)
-		ft_printf("data->x_area adress :: %p\n", data->x_area);
-	if (how == 4)
+	ft_printf("x :: %d\ny :: %d\nscroll :: %d\n", x, y, scroll);
+	if (scroll == 4)
 		ft_printf("Up\n");
-	else if (how == 5)
+	else if (scroll == 5)
 		ft_printf("Down\n");
 	return (0);
+	(void)x;
+	(void)y;
+	(void)data;
 }
 
 int	handle_keypress(int key, t_data *data)
@@ -62,20 +60,6 @@ int	to_close(t_data *data)
 
 int	render(t_data *data)
 {
-	// if (data->zoom_in && data->x_area > ADD_AREA && data->y_area > ADD_AREA)
-	// {
-	// 	data->x_area -= ADD_AREA;
-	// 	data->y_area -= ADD_AREA;
-	// 	data->x_start += (ADD_AREA / 2);
-	// 	data->y_start += (ADD_AREA / 2);
-	// }
-	// if (data->zoom_out)
-	// {
-	// 	data->x_area += ADD_AREA;
-	// 	data->y_area += ADD_AREA;
-	// 	data->x_start -= (ADD_AREA / 2);
-	// 	data->y_start -= (ADD_AREA / 2);
-	// }
 	draw(data);
 	return (0);
 }

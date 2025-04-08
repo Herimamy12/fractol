@@ -99,6 +99,7 @@ int		to_close(t_data *data);
 // 
 // event
 // 
+int		mouse_hook(int scroll, int x, int y, t_data *data);
 
 // 
 // render
