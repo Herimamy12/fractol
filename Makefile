@@ -14,7 +14,7 @@ LIBXDIR			=	./minilibx-linux/
 
 SRC					=	./src/main.c ./src/new_data.c ./src/print.c \
 						./src/destroy.c ./src/new_img.c ./src/loop.c \
-						./src/draw.c
+						./src/draw.c ./src/hook.c
 
 SRC_BONUS			=	./src_bonus/main.c ./src_bonus/parser.c \
 						./src_bonus/print.c ./src_bonus/get_path.c \

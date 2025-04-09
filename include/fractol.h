@@ -24,10 +24,10 @@
 # define HEIGTH 720
 
 // Iteration max for loop in fractol_point
-# define ITER_MAX 15
+# define ITER_MAX 50
 
 // Const additional for area
-# define ADD_AREA 0.1
+# define SHIFT 0.05
 
 typedef struct s_win
 {
@@ -44,20 +44,31 @@ typedef struct s_img
 	char	*addr;
 }			t_img;
 
+typedef struct s_flg
+{
+	int	shift_u;
+	int	shift_d;
+	int	shift_l;
+	int	shift_r;
+	int	zoom_in;
+	int	zoom_out;
+}		t_flg;
+
+
 typedef struct s_data
 {
 	int		type;
 	int		color;
-	double	zoom_in;
-	double	zoom_out;
 	double	c_re;
 	double	c_im;
 	double	x_area;
 	double	y_area;
 	double	x_start;
 	double	y_start;
+	double	scale_area;
 	t_win	*win;
 	t_img	*img;
+	t_flg	*flg;
 }			t_data;
 
 // 
@@ -87,6 +98,7 @@ t_win	*new_win(void);
 t_img	*new_img(t_win *win);
 void	put_pixel_in_image(t_img *img, int x, int y, int color);
 void	set_julia(t_data *data, char **argv);
+t_flg	*new_flag(void);
 
 // 
 // loop
@@ -100,6 +112,7 @@ int		to_close(t_data *data);
 // event
 // 
 int		mouse_hook(int scroll, int x, int y, t_data *data);
+void	zoom(char *state, t_data *data, int mouse_x, int mouse_y);
 
 // 
 // render

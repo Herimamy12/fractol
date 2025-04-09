@@ -12,15 +12,15 @@ t_data	*new_data(int argc, char **argv)
 		return (destroy_data(data), NULL);
 	data->win = new_win();
 	data->img = new_img(data->win);
+	data->flg = new_flag();
 	data->color = 0;
-	data->zoom_in = 0;
-	data->zoom_out = 0;
 	data->c_re = 0.0;
 	data->c_im = 0.0;
 	data->x_area = 4.0;
 	data->y_area = 4.0;
 	data->x_start = -2.0;
 	data->y_start = -2.0;
+	data->scale_area = 0.3;
 	set_julia(data, argv);
 	return (data);
 }
@@ -62,4 +62,20 @@ t_win	*new_win(void)
 	if (!win->win)
 		return (delete_win(win), p_error("mlx new window error\n"), NULL);
 	return (win);
+}
+
+t_flg	*new_flag(void)
+{
+	t_flg	*flg;
+
+	flg = ft_calloc(sizeof(t_flg), 1);
+	if (!flg)
+		return (p_error("Alloc t_flg error\n"), NULL);
+	flg->shift_d = 0;
+	flg->shift_l = 0;
+	flg->shift_r = 0;
+	flg->shift_u = 0;
+	flg->zoom_in = 0;
+	flg->zoom_out = 0;
+	return (flg);
 }
