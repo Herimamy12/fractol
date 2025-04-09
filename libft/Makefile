@@ -14,7 +14,7 @@ SRCS			=	./src/ft_atoi.c ./src/ft_isdigit.c ./src/ft_memmove.c ./src/ft_split.c 
 					./src/ft_lstlast_bonus.c ./src/ft_lstdelone_bonus.c ./src/ft_lstiter_bonus.c \
 					./src/get_next_line_bonus.c ./src/get_next_line_utils_bonus.c \
 					./src/ft_printf.c ./src/ft_utils.c ./src/ft_utilstwo.c ./src/ft_utilsthree.c \
-					./src/ft_iswhitespace.c ./src/ft_ishexa.c ./src/ft_strcmp.c
+					./src/ft_iswhitespace.c ./src/ft_ishexa.c ./src/ft_strcmp.c ./src/ft_atol.c
 
 OBJ_DIR			=	obj/
 

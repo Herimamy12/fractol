@@ -16,8 +16,8 @@ void	set_julia(t_data *data, char **argv)
 {
 	if (data->type == 1)
 		return ;
-	data->c_re = ft_atoi(argv[2]);
-	data->c_im = ft_atoi(argv[3]);
+	data->c_re = ft_atol(argv[2]);
+	data->c_im = ft_atol(argv[3]);
 }
 
 int	set_type(int argc, char **argv)
