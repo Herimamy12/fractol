@@ -12,11 +12,12 @@
 
 #include "../include/fractol.h"
 
-int	mouse_hook(int scroll, int x, int y, t_data *data)
+int	mouse_hook(int btn_clk, int x, int y, t_data *data)
 {
-	if (scroll == 4)
+	// ft_printf("%d\n", btn_clk);
+	if (btn_clk == 4)
 		data->flg->zoom_in = 1;
-	if (scroll == 5)
+	if (btn_clk == 5)
 		data->flg->zoom_out = 1;
 	data->mus->x = x;
 	data->mus->y = y;

@@ -12,6 +12,8 @@
 
 #include "../include/fractol.h"
 
+int	mouse_press(int press, int x, int y, t_data *data);
+
 void	loop(t_data *data)
 {
 	mlx_hook(data->win->win, 17, 0, &to_close, data);
@@ -19,7 +21,21 @@ void	loop(t_data *data)
 	mlx_hook(data->win->win, 03, 1L << 1, &handle_keyrelease, data);
 	mlx_loop_hook(data->win->ptr, &render, data);
 	mlx_mouse_hook(data->win->win, &mouse_hook, data);
+	// mlx_hook(data->win->win, 5, 0, &mouse_press, data);
 	mlx_loop(data->win->ptr);
+}
+
+int	mouse_press(int press, int x, int y, t_data *data)
+{
+	if (data)
+		ft_printf("ok\n");
+	else
+		ft_printf("No");
+	ft_printf("press :: %d\nx :: %d\ny :: %d\n", press, x, y);
+	return (0);
+	(void)x;
+	(void)y;
+	(void)data;
 }
 
 void	close_window(t_data *data, int status)
