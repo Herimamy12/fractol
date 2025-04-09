@@ -23,7 +23,7 @@
 # define WIDTH 1280
 # define HEIGTH 720
 
-# define SHIFT 0.05
+# define SHIFT 0.025
 # define ZOOM_FACTOR 0.75
 # define DEFAULT_COLOR 0x3A3AFF
 
@@ -51,6 +51,7 @@ typedef struct s_flg
 	int	zoom_in;
 	int	shift_sh;
 	int	zoom_out;
+	int	mouse_press;
 }		t_flg;
 
 typedef struct s_mus
@@ -119,11 +120,13 @@ int		to_close(t_data *data);
 // 
 // event
 // 
-int		mouse_hook(int scroll, int x, int y, t_data *data);
+int		mouse_press(int scroll, int x, int y, t_data *data);
 void	zoom(char *state, t_data *data);
 int		handle_keyrelease(int key, t_data *data);
 int		handle_keypress(int key, t_data *data);
-void	set_shift(int key, t_data *data);
+void	set_shift_key(int key, t_data *data);
+int		mouse_release(int btn_clk, int x, int y, t_data *data);
+int		mouse_move(int x, int y, t_data *data);
 
 // 
 // render

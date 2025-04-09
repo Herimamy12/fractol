@@ -12,17 +12,6 @@
 
 #include "../include/fractol.h"
 
-int	mouse_hook(int btn_clk, int x, int y, t_data *data)
-{
-	if (btn_clk == 4)
-		data->flg->zoom_in = 1;
-	if (btn_clk == 5)
-		data->flg->zoom_out = 1;
-	data->mus->x = x;
-	data->mus->y = y;
-	return (0);
-}
-
 void	zoom(char *state, t_data *data)
 {
 	double	ms_x;
@@ -65,14 +54,16 @@ int	handle_keypress(int key, t_data *data)
 	if (key == XK_Shift_L)
 		data->flg->shift_sh = 1;
 	if (data->flg->shift_sh)
-		set_shift(key, data);
+		set_shift_key(key, data);
 	return (0);
 }
 
-void	set_shift(int key, t_data *data)
+void	set_shift_key(int key, t_data *data)
 {
 	if (key == XK_c)
 		data->x_color += 5;
+	if (key == XK_i && data->iter_mx < 999)
+		data->iter_mx += 5;
 }
 
 int	handle_keyrelease(int key, t_data *data)
