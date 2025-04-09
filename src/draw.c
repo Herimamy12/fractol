@@ -27,8 +27,8 @@ void	draw(t_data *data)
 			data->color = DEFAULT_COLOR * data->x_color;
 			div = fractal_point(x, y, data);
 			data->color /= ++ div;
-			if (-- div == ITER_MAX || !div)
-				data->color = 0x2A2A2A;
+			if (-- div == data->iter_mx || !div)
+				data->color = 0x2D2D2D;
 			put_pixel_in_image(data->img, x, y, data->color);
 		}
 	}
@@ -54,7 +54,7 @@ int	fractal_point(int x, int y, t_data *data)
 		data->c_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
 		data->c_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
 	}
-	while (z_re * z_re + z_im * z_im < 4 && i < ITER_MAX && ++ i)
+	while (z_re * z_re + z_im * z_im < 4 && i < data->iter_mx && ++ i)
 	{
 		tmp = z_re * z_re - z_im * z_im + data->c_re;
 		z_im = 2 * z_re * z_im + data->c_im;

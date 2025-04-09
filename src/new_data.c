@@ -27,6 +27,7 @@ t_data	*new_data(int argc, char **argv)
 	data->flg = new_flag();
 	data->mus = new_mouse();
 	data->x_color = 1;
+	data->iter_mx = 70;
 	data->x_area = 4.0;
 	data->y_area = 4.0;
 	data->x_start = -2.0;
@@ -57,12 +58,6 @@ t_flg	*new_flag(void)
 	flg = ft_calloc(sizeof(t_flg), 1);
 	if (!flg)
 		return (p_error("Alloc t_flg error\n"), NULL);
-	flg->shift_d = 0;
-	flg->shift_l = 0;
-	flg->shift_r = 0;
-	flg->shift_u = 0;
-	flg->zoom_in = 0;
-	flg->zoom_out = 0;
 	return (flg);
 }
 
@@ -73,7 +68,5 @@ t_mus	*new_mouse(void)
 	mus = ft_calloc(sizeof(t_mus), 1);
 	if (!mus)
 		return (p_error("Alloc t_mus error\n"), NULL);
-	mus->x = 0;
-	mus->y = 0;
 	return (mus);
 }

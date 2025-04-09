@@ -62,9 +62,17 @@ int	handle_keypress(int key, t_data *data)
 		data->flg->shift_u = 1;
 	if (key == XK_Down)
 		data->flg->shift_d = 1;
+	if (key == XK_Shift_L)
+		data->flg->shift_sh = 1;
+	if (data->flg->shift_sh)
+		set_shift(key, data);
+	return (0);
+}
+
+void	set_shift(int key, t_data *data)
+{
 	if (key == XK_c)
 		data->x_color += 5;
-	return (0);
 }
 
 int	handle_keyrelease(int key, t_data *data)
@@ -77,5 +85,7 @@ int	handle_keyrelease(int key, t_data *data)
 		data->flg->shift_u = 0;
 	if (key == XK_Down)
 		data->flg->shift_d = 0;
+	if (key == XK_Shift_L)
+		data->flg->shift_sh = 0;
 	return (0);
 }

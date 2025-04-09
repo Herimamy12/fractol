@@ -24,7 +24,6 @@
 # define HEIGTH 720
 
 # define SHIFT 0.05
-# define ITER_MAX 70
 # define ZOOM_FACTOR 0.75
 # define DEFAULT_COLOR 0x3A3AFF
 
@@ -50,6 +49,7 @@ typedef struct s_flg
 	int	shift_l;
 	int	shift_r;
 	int	zoom_in;
+	int	shift_sh;
 	int	zoom_out;
 }		t_flg;
 
@@ -64,6 +64,7 @@ typedef struct s_data
 	int		type;
 	int		color;
 	int		x_color;
+	int		iter_mx;
 	double	c_re;
 	double	c_im;
 	double	x_area;
@@ -122,6 +123,7 @@ int		mouse_hook(int scroll, int x, int y, t_data *data);
 void	zoom(char *state, t_data *data);
 int		handle_keyrelease(int key, t_data *data);
 int		handle_keypress(int key, t_data *data);
+void	set_shift(int key, t_data *data);
 
 // 
 // render
