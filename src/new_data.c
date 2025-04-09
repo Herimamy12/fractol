@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new_data.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 12:24:51 by nherimam          #+#    #+#             */
+/*   Updated: 2025/04/09 12:24:52 by nherimam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
 t_data	*new_data(int argc, char **argv)
@@ -13,6 +25,7 @@ t_data	*new_data(int argc, char **argv)
 	data->win = new_win();
 	data->img = new_img(data->win);
 	data->flg = new_flag();
+	data->mus = new_mouse();
 	data->color = 0;
 	data->c_re = 0.0;
 	data->c_im = 0.0;
@@ -20,32 +33,8 @@ t_data	*new_data(int argc, char **argv)
 	data->y_area = 4.0;
 	data->x_start = -2.0;
 	data->y_start = -2.0;
-	data->scale_area = 0.3;
 	set_julia(data, argv);
 	return (data);
-}
-
-void	set_julia(t_data *data, char **argv)
-{
-	if (data->type == 1)
-		return ;
-	data->c_re = ft_atoi(argv[2]);
-	data->c_im = ft_atoi(argv[3]);
-}
-
-int	set_type(int argc, char **argv)
-{
-	if (argc != 2 && argc != 4)
-		return (help(), 0);
-	if (ft_strcmp(argv[1], "Mandelbrot") && ft_strcmp(argv[1], "Julia"))
-		return (help(), 0);
-	if (!ft_strcmp(argv[1], "Mandelbrot") && argc != 2)
-		return (help(), 0);
-	else if (!ft_strcmp(argv[1], "Julia") && argc != 4)
-		return (help(), 0);
-	if (!ft_strcmp(argv[1], "Mandelbrot"))
-		return (1);
-	return (2);
 }
 
 t_win	*new_win(void)
@@ -78,4 +67,16 @@ t_flg	*new_flag(void)
 	flg->zoom_in = 0;
 	flg->zoom_out = 0;
 	return (flg);
+}
+
+t_mus	*new_mouse(void)
+{
+	t_mus	*mus;
+
+	mus = ft_calloc(sizeof(t_mus), 1);
+	if (!mus)
+		return (p_error("Alloc t_mus error\n"), NULL);
+	mus->x = 0;
+	mus->y = 0;
+	return (mus);
 }
