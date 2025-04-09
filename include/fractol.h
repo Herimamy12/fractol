@@ -79,10 +79,12 @@ typedef struct s_data
 // 
 void	help(void);
 void	p_error(char *s);
+void	help_n(void);
 
 // 
 // check parameters error
 // 
+int		invalid_number(char *nptr);
 
 // 
 // delete
@@ -100,7 +102,7 @@ int		set_type(int argc, char **argv);
 t_win	*new_win(void);
 t_img	*new_img(t_win *win);
 void	put_pixel_in_image(t_img *img, int x, int y, int color);
-void	set_julia(t_data *data, char **argv);
+int		set_julia(t_data *data, char **argv);
 t_flg	*new_flag(void);
 t_mus	*new_mouse(void);
 

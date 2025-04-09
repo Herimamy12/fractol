@@ -18,6 +18,8 @@ void	destroy_data(t_data *data)
 		return ;
 	delete_img(data->img, data->win);
 	delete_win(data->win);
+	free (data->flg);
+	free (data->mus);
 	free (data);
 }
 

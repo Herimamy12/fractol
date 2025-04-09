@@ -20,20 +20,17 @@ t_data	*new_data(int argc, char **argv)
 	if (!data)
 		return (p_error("Alloc t_data error\n"), NULL);
 	data->type = set_type(argc, argv);
-	if (!data->type)
+	if (!data->type || !set_julia(data, argv))
 		return (destroy_data(data), NULL);
 	data->win = new_win();
 	data->img = new_img(data->win);
 	data->flg = new_flag();
 	data->mus = new_mouse();
 	data->color = 0;
-	data->c_re = 0.0;
-	data->c_im = 0.0;
 	data->x_area = 4.0;
 	data->y_area = 4.0;
 	data->x_start = -2.0;
 	data->y_start = -2.0;
-	set_julia(data, argv);
 	return (data);
 }
 

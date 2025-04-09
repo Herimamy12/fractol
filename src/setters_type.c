@@ -12,12 +12,41 @@
 
 #include "../include/fractol.h"
 
-void	set_julia(t_data *data, char **argv)
+int	set_julia(t_data *data, char **argv)
 {
 	if (data->type == 1)
-		return ;
+	{
+		data->c_re = 0.0;
+		data->c_im = 0.0;
+		return (1);
+	}
+	if (invalid_number(argv[2]) || invalid_number(argv[3]))
+		return (0);
 	data->c_re = ft_atol(argv[2]);
 	data->c_im = ft_atol(argv[3]);
+	return (1);
+}
+
+int	invalid_number(char *nptr)
+{
+	int	i;
+	int	comma;
+
+	i = 0;
+	comma = 0;
+	if (nptr[i] == '.')
+		return (help_n(), 1);
+	if (nptr[i] == '+' || nptr[i] == '-')
+		i++;
+	while (ft_isdigit(nptr[i]) || (!comma && nptr[i] == '.'))
+	{
+		if (!comma && nptr[i] == '.')
+			comma = 1;
+		i++;
+	}
+	if (nptr[i])
+		return (help_n(), 1);
+	return (0);
 }
 
 int	set_type(int argc, char **argv)
