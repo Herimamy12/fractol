@@ -81,7 +81,7 @@ void	help(void);
 void	p_error(char *s);
 
 // 
-// check map error
+// check parameters error
 // 
 
 // 
@@ -108,7 +108,6 @@ t_mus	*new_mouse(void);
 // loop
 // 
 void	loop(t_data *data);
-int		handle_keypress(int key, t_data *data);
 void	close_window(t_data *data, int status);
 int		to_close(t_data *data);
 
@@ -117,6 +116,8 @@ int		to_close(t_data *data);
 // 
 int		mouse_hook(int scroll, int x, int y, t_data *data);
 void	zoom(char *state, t_data *data, int mouse_x, int mouse_y);
+int		handle_keyrelease(int key, t_data *data);
+int		handle_keypress(int key, t_data *data);
 
 // 
 // render

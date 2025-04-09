@@ -14,22 +14,12 @@
 
 void	loop(t_data *data)
 {
-	mlx_hook(data->win->win, 02, 1L << 0, &handle_keypress, data);
 	mlx_hook(data->win->win, 17, 0, &to_close, data);
-	mlx_mouse_hook(data->win->win, &mouse_hook, data);
+	mlx_hook(data->win->win, 02, 1L << 0, &handle_keypress, data);
+	mlx_hook(data->win->win, 03, 1L << 1, &handle_keyrelease, data);
 	mlx_loop_hook(data->win->ptr, &render, data);
+	mlx_mouse_hook(data->win->win, &mouse_hook, data);
 	mlx_loop(data->win->ptr);
-}
-
-int	handle_keypress(int key, t_data *data)
-{
-	if (key == XK_Escape)
-		close_window(data, 0);
-	else if (key == XK_Left)
-		data->x_start -= SHIFT * data->x_area;
-	else if (key == XK_Right)
-		data->x_start += SHIFT * data->x_area;
-	return (0);
 }
 
 void	close_window(t_data *data, int status)
@@ -49,6 +39,14 @@ int	render(t_data *data)
 		zoom("IN", data, 640, 360);
 	if (data->flg->zoom_out)
 		zoom("OUT", data, 640, 360);
+	if (data->flg->shift_d)
+		data->y_start += SHIFT * data->y_area;
+	if (data->flg->shift_l)
+		data->x_start -= SHIFT * data->x_area;
+	if (data->flg->shift_r)
+		data->x_start += SHIFT * data->x_area;
+	if (data->flg->shift_u)
+		data->y_start -= SHIFT * data->y_area;
 	draw(data);
 	data->flg->zoom_in = 0;
 	data->flg->zoom_out = 0;

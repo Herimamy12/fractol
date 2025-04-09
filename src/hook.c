@@ -45,3 +45,31 @@ void	zoom(char *state, t_data *data, int ms_x, int ms_y)
 		data->y_start = zoom_center_y - (ms_y / (double)HEIGTH) * data->y_area;
 	}
 }
+
+int	handle_keypress(int key, t_data *data)
+{
+	if (key == XK_Escape)
+		close_window(data, 0);
+	if (key == XK_Left)
+		data->flg->shift_l = 1;
+	if (key == XK_Right)
+		data->flg->shift_r = 1;
+	if (key == XK_Up)
+		data->flg->shift_u = 1;
+	if (key == XK_Down)
+		data->flg->shift_d = 1;
+	return (0);
+}
+
+int	handle_keyrelease(int key, t_data *data)
+{
+	if (key == XK_Left)
+		data->flg->shift_l = 0;
+	if (key == XK_Right)
+		data->flg->shift_r = 0;
+	if (key == XK_Up)
+		data->flg->shift_u = 0;
+	if (key == XK_Down)
+		data->flg->shift_d = 0;
+	return (0);
+}
