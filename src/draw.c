@@ -24,11 +24,11 @@ void	draw(t_data *data)
 		x = -1;
 		while (++ x < WIDTH)
 		{
-			data->color = 0x3A3AFF;
+			data->color = DEFAULT_COLOR * data->x_color;
 			div = fractal_point(x, y, data);
 			data->color /= ++ div;
 			if (-- div == ITER_MAX || !div)
-				data->color = 0X0;
+				data->color = 0x2A2A2A;
 			put_pixel_in_image(data->img, x, y, data->color);
 		}
 	}

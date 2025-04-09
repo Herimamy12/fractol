@@ -26,6 +26,7 @@ t_data	*new_data(int argc, char **argv)
 	data->img = new_img(data->win);
 	data->flg = new_flag();
 	data->mus = new_mouse();
+	data->x_color = 1;
 	data->x_area = 4.0;
 	data->y_area = 4.0;
 	data->x_start = -2.0;

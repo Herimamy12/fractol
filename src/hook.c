@@ -14,7 +14,6 @@
 
 int	mouse_hook(int btn_clk, int x, int y, t_data *data)
 {
-	// ft_printf("%d\n", btn_clk);
 	if (btn_clk == 4)
 		data->flg->zoom_in = 1;
 	if (btn_clk == 5)
@@ -63,6 +62,8 @@ int	handle_keypress(int key, t_data *data)
 		data->flg->shift_u = 1;
 	if (key == XK_Down)
 		data->flg->shift_d = 1;
+	if (key == XK_c)
+		data->x_color += 5;
 	return (0);
 }
 
