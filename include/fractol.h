@@ -117,7 +117,7 @@ int		to_close(t_data *data);
 // event
 // 
 int		mouse_hook(int scroll, int x, int y, t_data *data);
-void	zoom(char *state, t_data *data, int mouse_x, int mouse_y);
+void	zoom(char *state, t_data *data);
 int		handle_keyrelease(int key, t_data *data);
 int		handle_keypress(int key, t_data *data);
 

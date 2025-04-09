@@ -23,11 +23,15 @@ int	mouse_hook(int scroll, int x, int y, t_data *data)
 	return (0);
 }
 
-void	zoom(char *state, t_data *data, int ms_x, int ms_y)
+void	zoom(char *state, t_data *data)
 {
+	double	ms_x;
+	double	ms_y;
 	double	zoom_center_x;
 	double	zoom_center_y;
 
+	ms_x = data->mus->x;
+	ms_y = data->mus->y;
 	zoom_center_x = (ms_x / (double)WIDTH) * data->x_area + data->x_start;
 	zoom_center_y = (ms_y / (double)HEIGTH) * data->y_area + data->y_start;
 	if (!ft_strcmp(state, "IN"))
