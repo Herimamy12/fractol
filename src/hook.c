@@ -30,22 +30,22 @@ void	zoom(char *state, t_data *data)
 	double	zoom_center_x;
 	double	zoom_center_y;
 
-	ms_x = data->mus->x;
 	ms_y = data->mus->y;
-	zoom_center_x = (ms_x / (double)WIDTH) * data->x_area + data->x_start;
+	ms_x = data->mus->x - (WIDTH - HEIGTH) / 2;
+	zoom_center_x = (ms_x / (double)HEIGTH) * data->x_area + data->x_start;
 	zoom_center_y = (ms_y / (double)HEIGTH) * data->y_area + data->y_start;
 	if (!ft_strcmp(state, "IN"))
 	{
 		data->x_area *= ZOOM_FACTOR;
 		data->y_area *= ZOOM_FACTOR;
-		data->x_start = zoom_center_x - (ms_x / (double)WIDTH) * data->x_area;
+		data->x_start = zoom_center_x - (ms_x / (double)HEIGTH) * data->x_area;
 		data->y_start = zoom_center_y - (ms_y / (double)HEIGTH) * data->y_area;
 	}
 	else if (!ft_strcmp(state, "OUT"))
 	{
 		data->x_area /= ZOOM_FACTOR;
 		data->y_area /= ZOOM_FACTOR;
-		data->x_start = zoom_center_x - (ms_x / (double)WIDTH) * data->x_area;
+		data->x_start = zoom_center_x - (ms_x / (double)HEIGTH) * data->x_area;
 		data->y_start = zoom_center_y - (ms_y / (double)HEIGTH) * data->y_area;
 	}
 }
