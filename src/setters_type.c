@@ -14,10 +14,13 @@
 
 int	set_julia(t_data *data, char **argv)
 {
-	if (data->type == 1)
+	data->bonus = 1;
+	if (data->type == 1 || data->type == 3)
 	{
 		data->c_re = 0.0;
 		data->c_im = 0.0;
+		if (data->type == 3)
+			data->bonus = -1;
 		return (1);
 	}
 	if (invalid_number(argv[2]) || invalid_number(argv[3]))
@@ -53,13 +56,17 @@ int	set_type(int argc, char **argv)
 {
 	if (argc != 2 && argc != 4)
 		return (help(), 0);
-	if (ft_strcmp(argv[1], "Mandelbrot") && ft_strcmp(argv[1], "Julia"))
+	if (ft_strcmp(argv[1], "Mandelbrot") && ft_strcmp(argv[1], "Julia") && ft_strcmp(argv[1], "Tricorn"))
 		return (help(), 0);
-	if (!ft_strcmp(argv[1], "Mandelbrot") && argc != 2)
+	if (!ft_strcmp(argv[1], "Tricorn") && argc != 2)
+		return (help(), 0);
+	else if (!ft_strcmp(argv[1], "Mandelbrot") && argc != 2)
 		return (help(), 0);
 	else if (!ft_strcmp(argv[1], "Julia") && argc != 4)
 		return (help(), 0);
 	if (!ft_strcmp(argv[1], "Mandelbrot"))
 		return (1);
-	return (2);
+	if (!ft_strcmp(argv[1], "Julia"))
+		return (2);
+	return (3);
 }
