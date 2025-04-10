@@ -16,6 +16,7 @@ void	help(void)
 {
 	p_error("How to use ??\n");
 	p_error("You have two choices, like :\n");
+	p_error("\t\t\t\t./fractol Tricorn\n");
 	p_error("\t\t\t\t./fractol Mandelbrot\n");
 	p_error("\t\t\t\t./fractol Julia real_number imaginary_number\n");
 }
@@ -23,7 +24,8 @@ void	help(void)
 void	help_n(void)
 {
 	p_error("The number must be a number (positive or negative)\n");
-	p_error("If you use a floating number, it must not start with a comma\n");
+	p_error("If you use a floating number, ");
+	p_error("it must not start or end with a comma\n");
 	p_error("Like :\n");
 	p_error("\t0.000000\n");
 	p_error("\t-0.000000\n");

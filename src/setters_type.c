@@ -37,7 +37,7 @@ int	invalid_number(char *nptr)
 
 	i = 0;
 	comma = 0;
-	if (nptr[i] == '.')
+	if (!nptr || !*nptr || nptr[i] == '.')
 		return (help_n(), 1);
 	if (nptr[i] == '+' || nptr[i] == '-')
 		i++;
@@ -47,7 +47,7 @@ int	invalid_number(char *nptr)
 			comma = 1;
 		i++;
 	}
-	if (nptr[i])
+	if (nptr[i] || nptr[--i] == '.')
 		return (help_n(), 1);
 	return (0);
 }
@@ -56,7 +56,8 @@ int	set_type(int argc, char **argv)
 {
 	if (argc != 2 && argc != 4)
 		return (help(), 0);
-	if (ft_strcmp(argv[1], "Mandelbrot") && ft_strcmp(argv[1], "Julia") && ft_strcmp(argv[1], "Tricorn"))
+	if (ft_strcmp(argv[1], "Mandelbrot") && ft_strcmp(argv[1], "Julia")
+		&& ft_strcmp(argv[1], "Tricorn"))
 		return (help(), 0);
 	if (!ft_strcmp(argv[1], "Tricorn") && argc != 2)
 		return (help(), 0);
