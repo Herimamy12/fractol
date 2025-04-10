@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../include/fractol_bonus.h"
 
 void	help(void)
 {
 	p_error("How to use ??\n");
 	p_error("You have two choices, like :\n");
-	p_error("\t\t\t\t./fractol Mandelbrot\n");
-	p_error("\t\t\t\t./fractol Julia real_number imaginary_number\n");
+	p_error("\t\t\t\t./fractol_bonus Tricorn\n");
+	p_error("\t\t\t\t./fractol_bonus Mandelbrot\n");
+	p_error("\t\t\t\t./fractol_bonus Julia real_number imaginary_number\n");
 }
 
 void	help_n(void)

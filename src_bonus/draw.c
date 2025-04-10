@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../include/fractol_bonus.h"
 
 void	draw(t_data *data)
 {
@@ -47,7 +47,7 @@ int	fractal_point(int x, int y, t_data *data)
 	x -= (WIDTH - HEIGTH) / 2;
 	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
 	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
-	if (data->type == 1)
+	if (data->type == 1 || data->type == 3)
 	{
 		z_re = 0;
 		z_im = 0;
@@ -57,7 +57,7 @@ int	fractal_point(int x, int y, t_data *data)
 	while (z_re * z_re + z_im * z_im < 4 && i < data->iter_mx && ++ i)
 	{
 		tmp = z_re * z_re - z_im * z_im + data->c_re;
-		z_im = 2 * z_re * z_im + data->c_im;
+		z_im = data->bonus * 2 * z_re * z_im + data->c_im;
 		z_re = tmp;
 	}
 	return (i);

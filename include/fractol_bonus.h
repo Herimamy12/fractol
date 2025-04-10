@@ -62,6 +62,7 @@ typedef struct s_data
 {
 	int		type;
 	int		color;
+	int		bonus;
 	int		x_color;
 	int		iter_mx;
 	double	c_re;
