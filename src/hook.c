@@ -62,8 +62,22 @@ void	set_shift_key(int key, t_data *data)
 {
 	if (key == XK_c)
 		data->x_color += 5;
-	if (key == XK_i && data->iter_mx < 999)
+	if (key == XK_KP_Add && data->iter_mx < 999)
 		data->iter_mx += 5;
+	if (key == XK_KP_Subtract && data->iter_mx > 10)
+		data->iter_mx -= 5;
+	if (key == XK_r)
+		reset(data);
+}
+
+void	reset(t_data *data)
+{
+	data->x_color = 1;
+	data->iter_mx = 20;
+	data->x_area = 4.0;
+	data->y_area = 4.0;
+	data->x_start = -2.0;
+	data->y_start = -2.0;
 }
 
 int	handle_keyrelease(int key, t_data *data)

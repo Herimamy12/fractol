@@ -125,6 +125,7 @@ int		handle_keypress(int key, t_data *data);
 void	set_shift_key(int key, t_data *data);
 int		mouse_release(int btn_clk, int x, int y, t_data *data);
 int		mouse_move(int x, int y, t_data *data);
+void	reset(t_data *data);
 
 // 
 // render
