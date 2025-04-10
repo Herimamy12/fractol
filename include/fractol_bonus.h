@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 10:28:36 by nherimam          #+#    #+#             */
-/*   Updated: 2025/03/04 10:28:39 by nherimam         ###   ########.fr       */
+/*   Created: 2025/04/10 15:48:30 by nherimam          #+#    #+#             */
+/*   Updated: 2025/04/10 15:48:31 by nherimam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # include <sys/stat.h>
 # include <X11/keysym.h>
