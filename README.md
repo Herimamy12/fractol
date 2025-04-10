@@ -7,8 +7,8 @@ Il permet de visualiser différentes fractales en temps réel avec une interacti
 
 ## 📸 Aperçu
 
-![Fractol Demo](https://www.youtube.com/watch?v=b005iHf8Z3g)  
-<sub>*Exemple d’un zoom dans un ensemble de Mandelbrot*</sub>
+![Fractol Demo](https://mandelbrot.site/)  
+<sub>*Demo de l'ensemble de Mandelbrot*</sub>
 
 ---
 
@@ -52,7 +52,7 @@ Utiliser `make bonus` pour avoir la version bonus avec plus des fonctionnalites 
 ```bash
 ./fractol mandelbrot
 ./fractol julia
-./fractol Tricorn
+./fractol_bonus Tricorn
 ```
 
 ### Exemple avec paramètres Julia
@@ -72,7 +72,6 @@ Utiliser `make bonus` pour avoir la version bonus avec plus des fonctionnalites 
 | 👾​ Incrementation iteration   | `Shift` `+` / `Shift` `-`                 |
 | 🎨 Changer les couleurs       | `Shift` `C`                               |
 | ♻️  Recentrer la fractale     | `Shift` `R`                               |
-| 🔄 Changer le type de fractale| `1` (Mandelbrot), `3` (Tricorn)           |
 | ❌ Quitter le programme       | `ESC`                                     |
 
 ---
