@@ -16,7 +16,7 @@ int	mouse_move(int x, int y, t_data *data)
 {
 	if (!data->flg->mouse_press)
 		return (1);
-	if (x > WIDTH || y > HEIGTH || x < 250 || y < 0)
+	if (x > WIDTH || y > HEIGTH || x < 268 || y < 0)
 	{
 		data->flg->mouse_press = 0;
 		return (2);
