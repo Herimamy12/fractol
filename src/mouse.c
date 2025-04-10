@@ -1,29 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nherimam <nherimam@student.42antanana      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/10 10:23:56 by nherimam          #+#    #+#             */
+/*   Updated: 2025/04/10 10:23:57 by nherimam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
 int	mouse_move(int x, int y, t_data *data)
 {
 	if (!data->flg->mouse_press)
 		return (1);
-	if (data->mus->x < x)
-	{
-		data->flg->shift_r = 0;
-		data->flg->shift_l = 1;
-	}
-	if (data->mus->x > x)
-	{
-		data->flg->shift_l = 0;
-		data->flg->shift_r = 1;
-	}
-	if (data->mus->y < y)
-	{
-		data->flg->shift_d = 0;
-		data->flg->shift_u = 1;
-	}
-	if (data->mus->y > y)
-	{
-		data->flg->shift_u = 0;
-		data->flg->shift_d = 1;
-	}
+	data->x_start += (data->mus->x - x) / (double)HEIGTH * data->x_area;
+	data->y_start += (data->mus->y - y) / (double)HEIGTH * data->y_area;
 	data->mus->x = x;
 	data->mus->y = y;
 	return (0);
