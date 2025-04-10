@@ -13,8 +13,6 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <math.h>
-# include <fcntl.h>
 # include <sys/stat.h>
 # include <X11/keysym.h>
 # include "../minilibx-linux/mlx.h"
