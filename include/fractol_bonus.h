@@ -71,6 +71,7 @@ typedef struct s_data
 	double	y_area;
 	double	x_start;
 	double	y_start;
+	void	*key_map;
 	t_win	*win;
 	t_img	*img;
 	t_flg	*flg;
@@ -108,6 +109,7 @@ void	put_pixel_in_image(t_img *img, int x, int y, int color);
 int		set_julia(t_data *data, char **argv);
 t_flg	*new_flag(void);
 t_mus	*new_mouse(void);
+void	*get_keymap(t_win *win);
 
 // 
 // loop

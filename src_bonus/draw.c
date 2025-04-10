@@ -21,7 +21,7 @@ void	draw(t_data *data)
 	y = -1;
 	while (++ y < HEIGTH)
 	{
-		x = -1;
+		x = 249;
 		while (++ x < WIDTH)
 		{
 			data->color = DEFAULT_COLOR * data->x_color;
@@ -44,7 +44,7 @@ int	fractal_point(int x, int y, t_data *data)
 	double	tmp;
 
 	i = 0;
-	x -= (WIDTH - HEIGTH) / 2;
+	x -= (WIDTH - HEIGTH + 250) / 2;
 	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
 	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
 	if (data->type == 1 || data->type == 3)

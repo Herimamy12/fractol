@@ -26,6 +26,7 @@ t_data	*new_data(int argc, char **argv)
 	data->img = new_img(data->win);
 	data->flg = new_flag();
 	data->mus = new_mouse();
+	data->key_map = get_keymap(data->win);
 	data->x_color = 1;
 	data->iter_mx = 20;
 	data->x_area = 4.0;
@@ -33,6 +34,20 @@ t_data	*new_data(int argc, char **argv)
 	data->x_start = -2.0;
 	data->y_start = -2.0;
 	return (data);
+}
+
+void	*get_keymap(t_win *win)
+{
+	int		x;
+	int		y;
+	void	*key_m;
+
+	x = 249;
+	y = 720;
+	key_m = mlx_xpm_file_to_image(win->ptr, "./.map.xpm", &x, &y);
+	if (!key_m)
+		return (p_error("Alloc key map image error\n"), NULL);
+	return (key_m);
 }
 
 t_win	*new_win(void)

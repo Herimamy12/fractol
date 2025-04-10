@@ -50,6 +50,7 @@ int	render(t_data *data)
 	if (data->flg->shift_u)
 		data->y_start -= SHIFT * data->y_area;
 	draw(data);
+	mlx_put_image_to_window(data->win->ptr, data->win->win, data->key_map, 0, 0);
 	data->flg->zoom_in = 0;
 	data->flg->zoom_out = 0;
 	return (0);
