@@ -17,9 +17,11 @@ void	destroy_data(t_data *data)
 	if (!data)
 		return ;
 	delete_img(data->img, data->win);
+	delete_img(data->sid, data->win);
 	delete_win(data->win);
 	free (data->flg);
 	free (data->mus);
+	free (data->ssd);
 	free (data);
 }
 

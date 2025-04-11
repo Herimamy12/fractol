@@ -22,11 +22,12 @@ t_data	*new_data(int argc, char **argv)
 	data->type = set_type(argc, argv);
 	if (!data->type || !set_julia(data, argv))
 		return (destroy_data(data), NULL);
-	data->win = new_win();
+	data->win = new_win(argv[1]);
 	data->img = new_img(data->win);
 	data->flg = new_flag();
 	data->mus = new_mouse();
-	data->key_map = get_keymap(data->win);
+	data->ssd = new_sizeofside();
+	data->sid = get_sidebar(data);
 	data->x_color = 1;
 	data->iter_mx = 20;
 	data->x_area = 4.0;
@@ -36,21 +37,17 @@ t_data	*new_data(int argc, char **argv)
 	return (data);
 }
 
-void	*get_keymap(t_win *win)
+t_ssd	*new_sizeofside(void)
 {
-	int		x;
-	int		y;
-	void	*key_m;
+	t_ssd	*ssd;
 
-	x = 249;
-	y = 720;
-	key_m = mlx_xpm_file_to_image(win->ptr, "./.map.xpm", &x, &y);
-	if (!key_m)
-		return (p_error("Alloc key map image error\n"), NULL);
-	return (key_m);
+	ssd	= ft_calloc(sizeof(t_ssd), 1);
+	if (!ssd)
+		return (p_error("Alloc ssd error\n"), NULL);
+	return (ssd);
 }
 
-t_win	*new_win(void)
+t_win	*new_win(char *win_name)
 {
 	t_win	*win;
 
@@ -60,7 +57,7 @@ t_win	*new_win(void)
 	win->ptr = mlx_init();
 	if (!win->ptr)
 		return (delete_win(win), p_error("mlx init error\n"), NULL);
-	win->win = mlx_new_window(win->ptr, WIDTH, HEIGTH, "ART FRACTAL");
+	win->win = mlx_new_window(win->ptr, WIDTH, HEIGTH, win_name);
 	if (!win->win)
 		return (delete_win(win), p_error("mlx new window error\n"), NULL);
 	return (win);

@@ -36,3 +36,35 @@ void	put_pixel_in_image(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
 }
+
+int	get_texture_pixel(t_img *img, int x, int y)
+{
+	int	pixel_index;
+
+	if (x < 0 || x > img->width || y < 0 || y > img->heigth)
+		return (0);
+	pixel_index = (y * img->line_length + x * (img->bpp / 8));
+	return (*(unsigned int *)(img->addr + pixel_index));
+}
+
+t_img	*get_sidebar(t_data *data)
+{
+	t_img	*sid;
+
+	sid = ft_calloc(sizeof(t_img), 1);
+	if (!sid)
+		return (p_error("Alloc sidebar error\n"), NULL);
+	sid->img = mlx_xpm_file_to_image(data->win->ptr,
+		".sidebar.xpm", &sid->width, &sid->heigth);
+	if (!sid->img)
+	{
+		data->ssd->width = 0;
+		data->ssd->heigth = 0;
+		return (sid);
+	}
+	sid->addr = mlx_get_data_addr(sid->img,
+		&sid->bpp, &sid->line_length, &sid->endian);
+	data->ssd->width = sid->width;
+	data->ssd->heigth = sid->heigth;
+	return (sid);
+}

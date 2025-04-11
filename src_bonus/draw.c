@@ -19,9 +19,10 @@ void	draw(t_data *data)
 	int	div;
 
 	y = 0;
+	sidebar(data);
 	while (++ y < HEIGTH - 1)
 	{
-		x = 261;
+		x = data->ssd->width;
 		while (++ x < WIDTH - 1)
 		{
 			data->color = DEFAULT_COLOR * data->x_color;
@@ -36,6 +37,24 @@ void	draw(t_data *data)
 		data->win->win, data->img->img, 0, 0);
 }
 
+void	sidebar(t_data *data)
+{
+	int	i;
+	int	y;
+	int	pix;
+
+	y = -1;
+	while (++ y < data->ssd->heigth && y < HEIGTH)
+	{
+		i = -1;
+		while (++ i < data->ssd->width && i < WIDTH)
+		{
+			pix = get_texture_pixel(data->sid, i, y);
+			put_pixel_in_image(data->img, i, y, pix);
+		}
+	}
+}
+
 int	fractal_point(int x, int y, t_data *data)
 {
 	int		i;
@@ -44,7 +63,7 @@ int	fractal_point(int x, int y, t_data *data)
 	double	tmp;
 
 	i = 0;
-	x -= (WIDTH - HEIGTH + 261) / 2;
+	x -= (WIDTH - HEIGTH + data->ssd->width) / 2;
 	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
 	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
 	if (data->type == 1 || data->type == 3)

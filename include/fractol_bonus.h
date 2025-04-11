@@ -34,6 +34,8 @@ typedef struct s_win
 typedef struct s_img
 {
 	int		bpp;
+	int		width;
+	int		heigth;
 	int		endian;
 	int		line_length;
 	void	*img;
@@ -58,6 +60,12 @@ typedef struct s_mus
 	int	y;
 }		t_mus;
 
+typedef struct s_ssd
+{
+	int	width;
+	int	heigth;
+}		t_ssd;
+
 typedef struct s_data
 {
 	int		type;
@@ -71,11 +79,12 @@ typedef struct s_data
 	double	y_area;
 	double	x_start;
 	double	y_start;
-	void	*key_map;
 	t_win	*win;
 	t_img	*img;
 	t_flg	*flg;
 	t_mus	*mus;
+	t_img	*sid;
+	t_ssd	*ssd;
 }			t_data;
 
 // 
@@ -103,13 +112,15 @@ void	delete_img(t_img *img, t_win *win);
 // 
 t_data	*new_data(int argc, char **argv);
 int		set_type(int argc, char **argv);
-t_win	*new_win(void);
+t_win	*new_win(char *win_name);
 t_img	*new_img(t_win *win);
 void	put_pixel_in_image(t_img *img, int x, int y, int color);
 int		set_julia(t_data *data, char **argv);
 t_flg	*new_flag(void);
 t_mus	*new_mouse(void);
-void	*get_keymap(t_win *win);
+int		get_texture_pixel(t_img *img, int x, int y);
+t_img	*get_sidebar(t_data *data);
+t_ssd	*new_sizeofside(void);
 
 // 
 // loop
@@ -136,5 +147,6 @@ void	reset(t_data *data);
 void	draw(t_data *data);
 int		fractal_point(int x, int y, t_data *data);
 int		render(t_data *data);
+void	sidebar(t_data *data);
 
 #endif
