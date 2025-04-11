@@ -41,7 +41,7 @@ t_ssd	*new_sizeofside(void)
 {
 	t_ssd	*ssd;
 
-	ssd	= ft_calloc(sizeof(t_ssd), 1);
+	ssd = ft_calloc(sizeof(t_ssd), 1);
 	if (!ssd)
 		return (p_error("Alloc ssd error\n"), NULL);
 	return (ssd);

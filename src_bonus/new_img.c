@@ -55,7 +55,7 @@ t_img	*get_sidebar(t_data *data)
 	if (!sid)
 		return (p_error("Alloc sidebar error\n"), NULL);
 	sid->img = mlx_xpm_file_to_image(data->win->ptr,
-		".sidebar.xpm", &sid->width, &sid->heigth);
+			".sidebar.xpm", &sid->width, &sid->heigth);
 	if (!sid->img)
 	{
 		data->ssd->width = 0;
@@ -63,7 +63,7 @@ t_img	*get_sidebar(t_data *data)
 		return (sid);
 	}
 	sid->addr = mlx_get_data_addr(sid->img,
-		&sid->bpp, &sid->line_length, &sid->endian);
+			&sid->bpp, &sid->line_length, &sid->endian);
 	data->ssd->width = sid->width;
 	data->ssd->heigth = sid->heigth;
 	return (sid);
