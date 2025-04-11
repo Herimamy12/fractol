@@ -7,8 +7,8 @@ Il permet de visualiser différentes fractales en temps réel avec une interacti
 
 ## 📸 Aperçu
 
-![Fractol Demo](https://mandelbrot.site/)  
-<sub>*Demo de l'ensemble de Mandelbrot*</sub>
+[Voir la démo de l'ensemble de Mandelbrot](https://mandelbrot.site/)  
+<sub>*Cliquez pour découvrir la visualisation interactive*</sub>
 
 ---
 
@@ -24,7 +24,6 @@ Il met en avant la gestion des événements, des images et la performance du ren
 - **Mandelbrot**
 - **Julia**
 - **Tricorn**
-- *(D'autres peuvent être ajoutées facilement)*
 
 ---
 
@@ -69,7 +68,8 @@ Utiliser `make bonus` pour avoir la version bonus avec plus des fonctionnalites 
 |-------------------------------|-------------------------------------------|
 | 🔍 Zoom avant / arrière       | Molette souris                            |
 | 🧭 Déplacement de la vue      | Flèches directionnelles / Souris maintenir|
-| 👾​ Incrementation iteration   | `Shift` `+` / `Shift` `-`                 |
+| 👾​ Incrementation iteration   | `Shift` `+`                               |
+| 👾​ Decrementation iteration   | `Shift` `-`                               |
 | 🎨 Changer les couleurs       | `Shift` `C`                               |
 | ♻️  Recentrer la fractale     | `Shift` `R`                               |
 | ❌ Quitter le programme       | `ESC`                                     |
