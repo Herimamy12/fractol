@@ -20,7 +20,7 @@ SRC					=	./src/main.c ./src/new_data.c ./src/print.c \
 SRC_BONUS			=	./src_bonus/main.c ./src_bonus/new_data.c ./src_bonus/print.c \
 						./src_bonus/destroy.c ./src_bonus/new_img.c ./src_bonus/loop.c \
 						./src_bonus/draw.c ./src_bonus/hook.c ./src_bonus/setters_type.c \
-						./src_bonus/mouse.c
+						./src_bonus/mouse.c ./src_bonus/button.c
 
 CC					=	cc -Wall -Werror -Wextra
 

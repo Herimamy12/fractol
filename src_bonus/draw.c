@@ -53,6 +53,52 @@ void	sidebar(t_data *data)
 			put_pixel_in_image(data->img, i, y, pix);
 		}
 	}
+	hover(data);
+}
+
+void	hover(t_data *data)
+{
+	int	x;
+	int	y;
+	int	end;
+	int	pix;
+
+	x = 150;
+	y = get_start(data);
+	if (!y)
+		return ;
+	end = y + 45;
+	while (++ y < end)
+	{
+		x = 150;
+		while (++ x < 248)
+		{
+			if (!data->flg->click)
+				pix = get_texture_pixel(data->ast->hov, x, y);
+			else
+				pix = get_texture_pixel(data->ast->clk, x, y);
+			put_pixel_in_image(data->img, x, y, pix);
+		}
+	}
+}
+
+int	get_start(t_data *data)
+{
+	if (data->flg->bt1_hover)
+		return (180);
+	if (data->flg->bt2_hover)
+		return (243);
+	if (data->flg->bt3_hover)
+		return (303);
+	if (data->flg->bt4_hover)
+		return (363);
+	if (data->flg->bt5_hover)
+		return (420);
+	if (data->flg->bt6_hover)
+		return (481);
+	if (data->flg->bt7_hover)
+		return (543);
+	return (0);
 }
 
 int	fractal_point(int x, int y, t_data *data)

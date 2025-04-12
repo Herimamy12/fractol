@@ -37,8 +37,15 @@ int	to_close(t_data *data)
 
 int	render(t_data *data)
 {
-	if (data->flg->mouse_press)
-		ft_printf("mouse press\n");
+	app_flag(data);
+	draw(data);
+	data->flg->zoom_in = 0;
+	data->flg->zoom_out = 0;
+	return (0);
+}
+
+void	app_flag(t_data *data)
+{
 	if (data->flg->zoom_in)
 		zoom("IN", data);
 	if (data->flg->zoom_out)
@@ -51,8 +58,5 @@ int	render(t_data *data)
 		data->x_start += SHIFT * data->x_area;
 	if (data->flg->shift_u)
 		data->y_start -= SHIFT * data->y_area;
-	draw(data);
-	data->flg->zoom_in = 0;
-	data->flg->zoom_out = 0;
-	return (0);
+	btn_flag(data);
 }

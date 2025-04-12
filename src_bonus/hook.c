@@ -64,7 +64,7 @@ void	set_shift_key(int key, t_data *data)
 		data->x_color += 5;
 	if (key == XK_KP_Add && data->iter_mx < 999)
 		data->iter_mx += 5;
-	if (key == XK_KP_Subtract && data->iter_mx > 10)
+	if (key == XK_KP_Subtract && data->iter_mx > 11)
 		data->iter_mx -= 5;
 	if (key == XK_r)
 		reset(data);

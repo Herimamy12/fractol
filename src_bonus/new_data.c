@@ -37,19 +37,6 @@ t_data	*new_data(int argc, char **argv)
 	return (data);
 }
 
-t_ast	*new_assets(t_data *data)
-{
-	t_ast	*ast;
-
-	ast = ft_calloc(sizeof(t_ast), 1);
-	if (!ast)
-		return (p_error("Alloc eroor assets\n"), NULL);
-	ast->sid = get_sidebar(data, "./.assets/.sidebar.xpm");
-	ast->hov = get_sidebar(data, "./.assets/.hover.xpm");
-	ast->clk = get_sidebar(data, "./.assets/.click.xpm");
-	return (ast);
-}
-
 t_ssd	*new_sizeofside(void)
 {
 	t_ssd	*ssd;
