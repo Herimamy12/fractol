@@ -48,7 +48,7 @@ int	mouse_press(int btn_clk, int x, int y, t_data *data)
 		data->flg->zoom_in = 1;
 	if (btn_clk == 5)
 		data->flg->zoom_out = 1;
-	if (btn_clk == 1)
+	if (btn_clk == 1 && x > data->ssd->width)
 		data->flg->mouse_press = 1;
 	data->mus->x = x;
 	data->mus->y = y;

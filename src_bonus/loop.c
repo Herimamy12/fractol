@@ -37,6 +37,8 @@ int	to_close(t_data *data)
 
 int	render(t_data *data)
 {
+	if (data->flg->mouse_press)
+		ft_printf("mouse press\n");
 	if (data->flg->zoom_in)
 		zoom("IN", data);
 	if (data->flg->zoom_out)

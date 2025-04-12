@@ -73,6 +73,37 @@ typedef struct s_ast
 	t_img	*clk;
 }			t_ast;
 
+typedef struct s_btn
+{
+	int	x;
+	int	y;
+}		t_btn;
+
+typedef struct s_abt
+{
+	int		bt1_hover;
+	int		bt2_hover;
+	int		bt3_hover;
+	int		bt4_hover;
+	int		bt5_hover;
+	int		bt6_hover;
+	int		bt7_hover;
+	int		bt1_click;
+	int		bt2_click;
+	int		bt3_click;
+	int		bt4_click;
+	int		bt5_click;
+	int		bt6_click;
+	int		bt7_click;
+	t_btn	*bt1;
+	t_btn	*bt2;
+	t_btn	*bt3;
+	t_btn	*bt4;
+	t_btn	*bt5;
+	t_btn	*bt6;
+	t_btn	*bt7;
+}			t_abt;
+
 typedef struct s_data
 {
 	int		type;
@@ -92,6 +123,7 @@ typedef struct s_data
 	t_mus	*mus;
 	t_ast	*ast;
 	t_ssd	*ssd;
+	t_btn	*btn;
 }			t_data;
 
 // 
