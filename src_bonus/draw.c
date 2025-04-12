@@ -49,7 +49,7 @@ void	sidebar(t_data *data)
 		i = -1;
 		while (++ i < data->ssd->width && i < WIDTH)
 		{
-			pix = get_texture_pixel(data->sid, i, y);
+			pix = get_texture_pixel(data->ast->sid, i, y);
 			put_pixel_in_image(data->img, i, y, pix);
 		}
 	}

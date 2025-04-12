@@ -47,7 +47,7 @@ int	get_texture_pixel(t_img *img, int x, int y)
 	return (*(unsigned int *)(img->addr + pixel_index));
 }
 
-t_img	*get_sidebar(t_data *data)
+t_img	*get_sidebar(t_data *data, char *name)
 {
 	t_img	*sid;
 
@@ -55,7 +55,7 @@ t_img	*get_sidebar(t_data *data)
 	if (!sid)
 		return (p_error("Alloc sidebar error\n"), NULL);
 	sid->img = mlx_xpm_file_to_image(data->win->ptr,
-			".sidebar.xpm", &sid->width, &sid->heigth);
+			name, &sid->width, &sid->heigth);
 	if (!sid->img)
 	{
 		data->ssd->width = 0;
@@ -64,6 +64,8 @@ t_img	*get_sidebar(t_data *data)
 	}
 	sid->addr = mlx_get_data_addr(sid->img,
 			&sid->bpp, &sid->line_length, &sid->endian);
+	if (ft_strcmp(name, "./.assets/.sidebar.xpm"))
+		return (sid);
 	data->ssd->width = sid->width;
 	data->ssd->heigth = sid->heigth;
 	return (sid);

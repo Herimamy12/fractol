@@ -66,6 +66,13 @@ typedef struct s_ssd
 	int	heigth;
 }		t_ssd;
 
+typedef struct s_ast
+{
+	t_img	*sid;
+	t_img	*hov;
+	t_img	*clk;
+}			t_ast;
+
 typedef struct s_data
 {
 	int		type;
@@ -83,7 +90,7 @@ typedef struct s_data
 	t_img	*img;
 	t_flg	*flg;
 	t_mus	*mus;
-	t_img	*sid;
+	t_ast	*ast;
 	t_ssd	*ssd;
 }			t_data;
 
@@ -106,6 +113,7 @@ void	destroy_data(t_data *data);
 void	delete_star(void **ptr);
 void	delete_win(t_win *win);
 void	delete_img(t_img *img, t_win *win);
+void	delete_ast(t_ast *ast, t_win *win);
 
 // 
 // init && new && && create
@@ -119,8 +127,9 @@ int		set_julia(t_data *data, char **argv);
 t_flg	*new_flag(void);
 t_mus	*new_mouse(void);
 int		get_texture_pixel(t_img *img, int x, int y);
-t_img	*get_sidebar(t_data *data);
+t_img	*get_sidebar(t_data *data, char *name);
 t_ssd	*new_sizeofside(void);
+t_ast	*new_assets(t_data *data);
 
 // 
 // loop

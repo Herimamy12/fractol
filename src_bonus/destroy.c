@@ -17,12 +17,22 @@ void	destroy_data(t_data *data)
 	if (!data)
 		return ;
 	delete_img(data->img, data->win);
-	delete_img(data->sid, data->win);
+	delete_ast(data->ast, data->win);
 	delete_win(data->win);
 	free (data->flg);
 	free (data->mus);
 	free (data->ssd);
 	free (data);
+}
+
+void	delete_ast(t_ast *ast, t_win *win)
+{
+	if (!ast || !win)
+		return ;
+	delete_img(ast->clk, win);
+	delete_img(ast->hov, win);
+	delete_img(ast->sid, win);
+	free (ast);
 }
 
 void	delete_star(void **ptr)
