@@ -37,6 +37,33 @@ void	draw(t_data *data)
 		data->win->win, data->img->img, 0, 0);
 }
 
+int	fractal_point(int x, int y, t_data *data)
+{
+	int		i;
+	double	z_re;
+	double	z_im;
+	double	tmp;
+
+	i = 0;
+	x -= (WIDTH - HEIGTH + data->ssd->width) / 2;
+	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
+	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
+	if (data->type == 1 || data->type == 3)
+	{
+		z_re = 0;
+		z_im = 0;
+		data->c_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
+		data->c_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
+	}
+	while (z_re * z_re + z_im * z_im < 4 && i < data->iter_mx && ++ i)
+	{
+		tmp = z_re * z_re - z_im * z_im + data->c_re;
+		z_im = data->bonus * 2 * z_re * z_im + data->c_im;
+		z_re = tmp;
+	}
+	return (i);
+}
+
 void	sidebar(t_data *data)
 {
 	int	i;
@@ -99,31 +126,4 @@ int	get_start(t_data *data)
 	if (data->flg->bt7_hover)
 		return (543);
 	return (0);
-}
-
-int	fractal_point(int x, int y, t_data *data)
-{
-	int		i;
-	double	z_re;
-	double	z_im;
-	double	tmp;
-
-	i = 0;
-	x -= (WIDTH - HEIGTH + data->ssd->width) / 2;
-	z_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
-	z_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
-	if (data->type == 1 || data->type == 3)
-	{
-		z_re = 0;
-		z_im = 0;
-		data->c_re = (x / (double)HEIGTH) * data->x_area + data->x_start;
-		data->c_im = (y / (double)HEIGTH) * data->y_area + data->y_start;
-	}
-	while (z_re * z_re + z_im * z_im < 4 && i < data->iter_mx && ++ i)
-	{
-		tmp = z_re * z_re - z_im * z_im + data->c_re;
-		z_im = data->bonus * 2 * z_re * z_im + data->c_im;
-		z_re = tmp;
-	}
-	return (i);
 }

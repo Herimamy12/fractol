@@ -41,7 +41,7 @@ void	btn_flag(t_data *data)
 {
 	if (!data->flg->mouse_press || !data->flg->click)
 		return ;
-	data->mus->x = 640;
+	data->mus->x = 640 + (data->ssd->width / 2);
 	data->mus->y = 360;
 	if (data->flg->bt1_click)
 		data->x_color ++;
